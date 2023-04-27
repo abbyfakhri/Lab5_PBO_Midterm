@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Main{
 
     public void demoCreateUser(){
@@ -13,6 +15,23 @@ class Main{
     
             System.out.println("---------------------------");
         }
+    }
+
+    public static void inputExample(){
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("masukkan angka: ");
+
+        if(scan.hasNextFloat()){
+            float number =  scan.nextFloat();
+            System.out.println("you entered a valid number: "+number);
+        }
+        else{
+            String input = scan.next();
+            System.out.println("invalid input: "+input+" is not a number");
+        }
+        
+        scan.close();
     }
 
     
@@ -36,10 +55,16 @@ class Main{
 
         transaction.deposit(newAccount.getAccountNumber(), 10000);
         transaction.deposit(newAccount2.getAccountNumber(), 12500);
+        transaction.deposit(newAccount.getAccountNumber(), 5000);
+
+        transaction.send(newAccount.getAccountNumber(), newAccount2.getAccountNumber(), 15000);
+        transaction.send(newAccount2.getAccountNumber(), newAccount.getAccountNumber(), 7500);
 
         storage.showAllDataInStore();
 
+        storage.getAllTransactionHistory();
 
+        
 
 
     }

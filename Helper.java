@@ -16,6 +16,5 @@ public class Helper {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = now.format(formatter);
         return formattedDateTime;
-        //System.out.println("Current date and time: " + formattedDateTime);
     }
 }
