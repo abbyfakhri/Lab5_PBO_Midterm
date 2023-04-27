@@ -18,6 +18,10 @@ public class TransactionHistory {
 
     }
 
+    public int getAccountNumber(){
+        return originAccountNumber;
+    }
+
     public void getHistory(){
         System.out.println("Transaction Type: "+transactionType);
         System.out.println("Transaction Time: "+transactionTime);
@@ -26,7 +30,7 @@ public class TransactionHistory {
         if(transactionType.equals("transfer") || transactionType.equals("receive")){
             System.out.println("Receiver Account: "+destinationAccountNumber);
         }
-        
+
         System.out.println("Transaction Amount: "+transactionAmount);
         System.out.println("-------------------------------------------");
     }

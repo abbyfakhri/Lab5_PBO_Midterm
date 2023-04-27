@@ -51,6 +51,14 @@ public class StoreAccount {
         history.add(transfer);
     }
 
+    public void getTransactionHistoryByAccountNumber(int accountNumber){
+        for(int i = 0;i<history.size();i++){
+            if(history.get(i).getAccountNumber() == accountNumber){
+                history.get(i).getHistory();
+            }
+        }
+    }
+
     public void updateUserBalance(int dataIndex, float amount){
         
         Account account = users.get(dataIndex);

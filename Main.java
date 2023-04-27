@@ -62,7 +62,11 @@ class Main{
 
         storage.showAllDataInStore();
 
-        storage.getAllTransactionHistory();
+       // storage.getAllTransactionHistory();
+
+       storage.getTransactionHistoryByAccountNumber(newAccount.getAccountNumber());
+
+
 
         
 
