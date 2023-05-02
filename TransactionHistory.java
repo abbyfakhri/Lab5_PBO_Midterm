@@ -18,8 +18,12 @@ public class TransactionHistory {
 
     }
 
-    public int getAccountNumber(){
+    public int getOriginAccount(){
         return originAccountNumber;
+    }
+
+    public int getReceiverAccount(){
+        return destinationAccountNumber;
     }
 
     public void getHistory(){

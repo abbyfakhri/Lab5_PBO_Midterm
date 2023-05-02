@@ -26,6 +26,27 @@ public class StoreAccount {
 
     }
 
+    public boolean login(String name,String password){
+        for(int i = 0; i<users.size();i++){
+            if(users.get(i).getName().equals(name) && users.get(i).getPassword().equals(password)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public Account getAccount(String name,String password){
+        for(int i = 0; i<users.size();i++){
+            if(users.get(i).getName().equals(name) && users.get(i).getPassword().equals(password)){
+                return users.get(i);
+            }
+        }
+
+        return null;
+    }
+
+
     public void verifyTranser(int senderIndex,int receiverIndex,float amount){
         Account senderAccount = users.get(senderIndex);
         Account receiverAccount = users.get(receiverIndex);
@@ -53,7 +74,7 @@ public class StoreAccount {
 
     public void getTransactionHistoryByAccountNumber(int accountNumber){
         for(int i = 0;i<history.size();i++){
-            if(history.get(i).getAccountNumber() == accountNumber){
+            if((history.get(i).getOriginAccount() == accountNumber) ){
                 history.get(i).getHistory();
             }
         }
@@ -84,4 +105,7 @@ public class StoreAccount {
             history.get(i).getHistory();
         }
     }
+
+    
+
 }

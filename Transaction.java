@@ -1,9 +1,6 @@
 public class Transaction {
 
     StoreAccount users = new StoreAccount();
-
-    
-    
     
     public void send(int senderAccountNumber,int recipientAccountNumber,float amount){
 
