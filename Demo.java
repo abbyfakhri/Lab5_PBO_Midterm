@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Demo {
     
     public void runDemo(){
@@ -37,38 +35,6 @@ public class Demo {
         Menu menu = new Menu();
 
         menu.showMenu();
-    }
-
-    public void demoCreateUser(){
-
-        for(int i = 0;i<10;i++){
-    
-            System.out.println("creating new account demo");
-    
-            Account newAccount = new Account();
-            newAccount.setName("abby");
-    
-            newAccount.getUserDetail();
-    
-            System.out.println("---------------------------");
-        }
-    }
-
-    public  void inputExample(){
-        Scanner scan = new Scanner(System.in);
-
-        System.out.print("masukkan angka: ");
-
-        if(scan.hasNextFloat()){
-            float number =  scan.nextFloat();
-            System.out.println("you entered a valid number: "+number);
-        }
-        else{
-            String input = scan.next();
-            System.out.println("invalid input: "+input+" is not a number");
-        }
-        
-        scan.close();
     }
 
 }

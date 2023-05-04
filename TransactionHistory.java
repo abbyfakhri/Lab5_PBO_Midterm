@@ -11,11 +11,8 @@ public class TransactionHistory {
         originAccountNumber = _origin;
         destinationAccountNumber = _destination;
         transactionAmount = _amount;
-
         transactionTime = helper.getCurrentDate();
-
         transactionType = _transactionType;
-
     }
 
     public int getOriginAccount(){
@@ -38,9 +35,4 @@ public class TransactionHistory {
         System.out.println("Transaction Amount: "+transactionAmount);
         System.out.println("-------------------------------------------");
     }
-
-    
-    
-
-
 }

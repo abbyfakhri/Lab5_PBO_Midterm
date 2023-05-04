@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class StoreAccount {
     
     private static ArrayList <Account> users = new ArrayList<Account>();

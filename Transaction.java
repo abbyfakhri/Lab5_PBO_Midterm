@@ -38,9 +38,4 @@ public class Transaction {
         }
 
     }
-
-    public void receive(int _accountNumber,float _amount){
-
-    }
-
 }
