@@ -1,14 +1,15 @@
 
-import java.util.Random;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Helper {
     public int generateAccountNumber(){
-        Random random = new Random();
+
+        SecureRandom random =  new SecureRandom();
         int randomNumber = random.nextInt(900000) + 100000; // generates a number between 100000 and 999999
-        //System.out.println("Random six-digit number: " + randomNumber);
         return randomNumber;
+        
     }
 
     public String getCurrentDate(){

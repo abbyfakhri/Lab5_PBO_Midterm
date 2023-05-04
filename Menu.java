@@ -6,6 +6,10 @@ public class Menu {
     private static StoreAccount storage = new StoreAccount();
     private static Transaction transaction = new Transaction();
 
+    Menu(){
+        createDummyAccount();
+    }
+
     public void showMenu(){
         
         System.out.println("Welcome to IKLC Bank");
@@ -16,7 +20,8 @@ public class Menu {
 
             System.out.println("1. Log in to Your Account");
             System.out.println("2. Create New Account");
-            System.out.println("3. Exit");
+            System.out.println("3. Show Available Accounts");
+            System.out.println("4. Exit");
             System.out.print("Enter Option: ");
 
             int input = getNumberInput();
@@ -36,8 +41,15 @@ public class Menu {
                     createNewAccount();
                     showMenu();
                 }
-                
+
                 else if(input == 3){
+                    System.out.println("Available Accounts");
+                    for(int i = 0;i<storage.getUserCount();i++){
+                        
+                    }
+                }
+                
+                else if(input == 4){
                     System.out.println("Thank You for Banking With Us, See You Again :)");
                 }
 
@@ -81,7 +93,6 @@ public class Menu {
         
 
         System.out.println("your account details: ");
-        //myAccount.getUserDetail();
 
         System.out.println("Transaction Menu:");
         System.out.println("1. Deposit");
@@ -210,6 +221,36 @@ public class Menu {
                 System.out.println("Please enter number....");
                 deposit(account);
             }
+    }
+
+    private void createDummyAccount(){
+        String name1 = "abby";
+        String pass1 = "123";
+
+        Account dummyAccount1 = new Account();
+        dummyAccount1.setName(name1);
+        dummyAccount1.setPassword(pass1);
+        dummyAccount1.setNewBalance(83000);
+        
+        String name2 = "marco";
+        String pass2 = "123";
+
+        Account dummyAccount2 = new Account();
+        dummyAccount2.setName(name2);
+        dummyAccount2.setPassword(pass2);
+        dummyAccount2.setNewBalance(43000);
+
+        String name3 = "jack";
+        String pass3 = "123";
+
+        Account dummyAccount3 = new Account();
+        dummyAccount3.setName(name3);
+        dummyAccount3.setPassword(pass3);
+        dummyAccount3.setNewBalance(77000);
+
+        storage.storeUserData(dummyAccount1);
+        storage.storeUserData(dummyAccount2);
+        storage.storeUserData(dummyAccount3);
     }
 
     private void createNewAccount(){

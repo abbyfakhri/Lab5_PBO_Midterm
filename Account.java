@@ -12,8 +12,6 @@ public class Account {
         accountNumber = helper.generateAccountNumber();
         registrationDate = helper.getCurrentDate();
         balance = 0;
-
-
     }
 
     public void setPassword(String _password){
