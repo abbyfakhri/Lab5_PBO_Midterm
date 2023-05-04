@@ -88,53 +88,44 @@ public class Menu {
         System.out.println("2. Send");
         System.out.println("3. Check Balance");
         System.out.println("4. Get Account Details");
-        System.out.println("5. Logout, and back to main menu");
+        System.out.println("5. Get Transaction History");
+        System.out.println("6. Logout, and back to main menu");
 
         System.out.print("pick menu: ");
 
         int input = getNumberInput();
 
+        System.out.println("-------------------------------------------");
+
+
         switch(input){
             case 1:
 
-            System.out.println("deposit");
-            System.out.print("Enter deposit Amount: ");
-            float inputAmount = getFloatInput();
-            transaction.deposit(myAccount.getAccountNumber(), inputAmount);
-            System.out.println("Succesfully Deposit "+inputAmount+" to "+myAccount.getAccountNumber());
-            showTransactionMenu(name, password);
-
+            deposit(myAccount);
+            
             break;
 
             case 2:
-            System.out.println("Send money");
             
-            System.out.print("destination account number: ");
-            int destinationAccountNumber = getNumberInput();
-
-            System.out.print("enter the amount of money you want to send: ");
-            float sendAmount = getFloatInput();
-
-            transaction.send(myAccount.getAccountNumber(), destinationAccountNumber, sendAmount);
-
-            showTransactionMenu(name, password);
+            send(myAccount);
 
             break;
 
             case 3:
-            System.out.println("Check balance");
-            System.out.println("Your current balance is: "+myAccount.getCurrentBalance());
-            showTransactionMenu(name, password);
+            checkBalance(myAccount);
             break;
 
             case 4:
-            System.out.println("Get Account Details");
-            myAccount.getUserDetail();
-            showTransactionMenu(name, password);
+            accountDetails(myAccount);
+            break;
+
+            case 5:
+            getTransactionHistory(myAccount);
             break;
             
 
-            case 5:
+            case 6:
+            System.out.println("Logging Out.......");
             showMenu();
             break;
 
@@ -147,8 +138,79 @@ public class Menu {
 
     }
 
+    private void getTransactionHistory(Account account){
+        System.out.println("Getting Transaction History");
+        storage.getTransactionHistoryByAccountNumber(account.getAccountNumber());
+        showTransactionMenu(account.getName(), account.getPassword());
+    }
 
+    private void accountDetails(Account account){
+        System.out.println("Get Account Details");
+        account.getUserDetail();
+        showTransactionMenu(account.getName(), account.getPassword());
+    }
 
+    private void checkBalance(Account account){
+        System.out.println("Check balance");
+        System.out.println("Your current balance is: "+account.getCurrentBalance());
+        showTransactionMenu(account.getName(), account.getPassword());
+    }
+
+    private void send(Account account){
+        System.out.println("Send money");
+            
+        System.out.print("destination account number: ");
+
+        scan.nextLine();
+        
+        int destinationAccountNumber = getNumberInput();
+
+        if(destinationAccountNumber != -1){
+        
+            System.out.print("enter the amount of money you want to send: ");
+
+            scan.nextLine();
+
+            float sendAmount = getFloatInput();
+
+            if(sendAmount != -1){
+
+                transaction.send(account.getAccountNumber(), destinationAccountNumber, sendAmount);
+        
+                showTransactionMenu(account.getName(), account.getPassword());
+            }
+            else{
+                System.out.println("Please enter number");
+                send(account);
+            }
+    
+        }
+
+        else{
+            System.out.println("Please enter number");
+            send(account);
+        }
+
+    }
+
+    private void deposit(Account account){
+        System.out.println("deposit");
+        System.out.print("Enter deposit Amount: ");
+
+            scan.nextLine();
+            float inputAmount = getFloatInput();
+
+            if(inputAmount != -1){
+                transaction.deposit(account.getAccountNumber(), inputAmount);
+                System.out.println("Succesfully Deposit "+inputAmount+" to "+account.getAccountNumber());
+                showTransactionMenu(account.getName(), account.getPassword());
+
+            }
+            else{
+                System.out.println("Please enter number....");
+                deposit(account);
+            }
+    }
 
     private void createNewAccount(){
 
